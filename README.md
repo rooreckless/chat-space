@@ -36,4 +36,3 @@
 |group_id|integer|null: false, foreign_key: true|
 - belongs_to :user
 - belongs_to :group
-=======
