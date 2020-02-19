@@ -1,0 +1,8 @@
+$BtnBlueColor: #38aef0;
+$MessageMainBlackColor:#333333;
+$MessageSubGrayColor:#999999;
+$BackGroundWhiteColor:#ffffff;
+@mixin flexBetween(){
+  display:flex;
+  justify-content: space-between;
+}
