@@ -145,6 +145,7 @@ height:100vh;
           right:10px;
           top:10px;
           font-size:1.5rem;
+          cursor: pointer;
         }
         &__fileupload{
           display:none;
@@ -159,7 +160,7 @@ height:100vh;
         border-color:$BtnBlueColor;
         background-color:$BtnBlueColor;
         color:$BackGroundWhiteColor;
-        
+        cursor: pointer;
       }
     }
   }
