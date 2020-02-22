@@ -131,23 +131,20 @@ height:100vh;
       background-color: #d2d2d2;
       padding:20px 40px;
       font-size: 16px;
+      position: relative;
       form{
         @include flexBetween();
-      }
-      .input-box{
-        background-color: $BackGroundWhiteColor;
-        @include flexBetween();
-        height:50px;
-        width:100%;
         position: relative;
+      }
+       .input-box{ 
         &__text{
-          border-style: none;
+          border:none;
           width:100%;
           padding:0 10px;
         }
         &__image{
           position: absolute;
-          right:10px;
+          right:120px;
           top:10px;
           font-size:1.5rem;
           cursor: pointer;

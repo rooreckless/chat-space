@@ -3,7 +3,9 @@ class MessagesController < ApplicationController
 
   def index
     @message = Message.new
+    #下のフォームへの新規メッセージ用のモデルMessage型インスタンス変数
     @messages = @group.messages.includes(:user)
+    #メッセージ全表示用のインスタンス変数@messages(@groupから、messagesを引き出す。)
   end
 
   def create
