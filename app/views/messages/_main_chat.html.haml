@@ -2,39 +2,43 @@
   .chat-header
     .group-info
       .group-info__name
-        testG
+        = @group.name
       .group-info__members
-        Member：testtest test01
+        Member：
+        - @group.users.ids.each do |group_id|
+          =User.find(group_id).name
     .group-edit__btn
-      = link_to "#" do
+      = link_to edit_group_path(@group.id) do
         Edit
         %span<>
-      
+  
   .message-list
-    .message
-      .message__info
-        %p.message__info__sender
-          test01
-        %p.message__info__date
-          2020/02/19(Wed)14:28:09
-      .message__main
-        %p
-          testメッセージです。ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-    .message
-      .message__info
-        %p.message__info__sender
-          test02
-        %p.message__info__date
-          2020/02/20(Thr)14:28:09
-      .message__main
-        %p
-          testメッセージです。いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい
-  .message-form
-    %form
-      .input-box
-        %input{placeholder:"type a message",class: "input-box__text"}
-          %label{class: "input-box__image"}
-            = icon('far','image')
-            %input{display: "none",class:"input-box__fileupload", type: "file"}
+    = render @messages
 
-      %input{type: "submit",value: "Send",class:"submit-btn"}
+  -# .message-list
+  -#   .message
+  -#     .message__info
+  -#       %p.message__info__sender
+  -#         test01
+  -#       %p.message__info__date
+  -#         2020/02/19(Wed)14:28:09
+  -#     .message__main
+  -#       %p
+  -#         testメッセージです。ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+  -#   .message
+  -#     .message__info
+  -#       %p.message__info__sender
+  -#         test02
+  -#       %p.message__info__date
+  -#         2020/02/20(Thr)14:28:09
+  -#     .message__main
+  -#       %p
+  -#         testメッセージです。いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい
+  .message-form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+      .input-box
+        = f.label :image, class: 'input-box__image' do
+          = icon('far', 'image')
+          = f.file_field :image, class: 'input-box__fileupload',display: "none"
+      = f.submit 'Send', class: 'submit-btn'

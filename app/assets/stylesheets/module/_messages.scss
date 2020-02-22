@@ -9,7 +9,6 @@ height:100vh;
   .side-bar{
     width:300px;
     font-weight: bold;
-    
     &__header{
       @include flexBetween();
       align-items: center;
@@ -34,6 +33,7 @@ height:100vh;
             text-decoration: none;
             margin-left: 5px;
             font-size: 16px;
+            
           }
           
         }
@@ -44,17 +44,22 @@ height:100vh;
     &__group-list{
       height:calc(100vh - 100px);
       background-color: #2f3e51;
-      color:$BackGroundWhiteColor;
       font-weight: bold;
       padding:20px 20px 0px 20px;
+      text-decoration: none;
+      color:$BackGroundWhiteColor;
       .group{
         height:65px;
         &__name{
           font-size: 15px;
+          color:$BackGroundWhiteColor;
+          text-decoration: none;
         }
         &__message{
           margin-top: 5px;
           font-size: 11px;
+          color:$BackGroundWhiteColor;
+          text-decoration: none;
         }
       }
     }
@@ -126,23 +131,20 @@ height:100vh;
       background-color: #d2d2d2;
       padding:20px 40px;
       font-size: 16px;
+      position: relative;
       form{
         @include flexBetween();
-      }
-      .input-box{
-        background-color: $BackGroundWhiteColor;
-        @include flexBetween();
-        height:50px;
-        width:100%;
         position: relative;
+      }
+       .input-box{ 
         &__text{
-          border-style: none;
+          border:none;
           width:100%;
           padding:0 10px;
         }
         &__image{
           position: absolute;
-          right:10px;
+          right:120px;
           top:10px;
           font-size:1.5rem;
           cursor: pointer;
