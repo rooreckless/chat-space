@@ -10,7 +10,7 @@ $(function(){
     $.ajax({
       url: url,  //同期通信でいう『パス』
       type: 'POST',  //同期通信でいう『HTTPメソッド』
-      data: FormData,  
+      data: formData,  
       dataType: 'json',
       processData: false,
       contentType: false
