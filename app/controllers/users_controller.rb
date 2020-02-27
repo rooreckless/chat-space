@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
   def index
+    #binding.pry
+    #上はテスト用のbinding.pryです。
+    #users.jsからのajax通信($ajax)のdataを、
+    #このアクションのparamsで受け取ってるか確認します。
+    puts "ここはusers#indexです。users.jsより$.ajaxで呼び出されました。"
+    puts "ajaxで送信されたdataをparmsでうけています。"
+    puts "params = "
+    puts params
+    #くどいけどさらにテスト rubyのコンソール上でも表示できるか確かめます
     respond_to do |format|
       format.html
       format.json
