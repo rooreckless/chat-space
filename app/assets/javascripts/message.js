@@ -71,11 +71,10 @@ $(function(){
       var html = buildHTML(data);
       $('.message-list').append(html);
       $('.input-box__text').val("");
-      var list=$('.message-list').children();
       $('.message-list').animate({ scrollTop: $('.message-list')[0].scrollHeight});
       $('[type="submit"]').attr('disabled', false);
     }).fail(function(){
-      alert('error');
+      alert("メッセージ送信に失敗しました");
     });
   });
 }); 
