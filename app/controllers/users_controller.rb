@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     puts "ajaxで送信されたdataをparmsでうけています。"
     puts "params = "
     puts params
+    puts params[:keyword]
     #くどいけどさらにテスト rubyのコンソール上でも表示できるか確かめます
     respond_to do |format|
       format.html

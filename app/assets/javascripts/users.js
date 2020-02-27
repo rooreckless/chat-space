@@ -10,7 +10,7 @@ $(function(){
       type: 'GET',    //HTTPメソッド
       url: '/users', //users_controllerの、indexアクションにリクエストの送信先を設定する
       dataType: 'json',
-      data: input,   //テキストフィールドに入力された文字を設定する
+      data: { keyword: input }   //テキストフィールドに入力された文字を設定する
     })
   });
 });
