@@ -17,14 +17,7 @@ $(function(){
   }
   
   function buildHTML(message){
-    // 「もしメッセージに画像が含まれていたら」という条件式
-    // console.log("----buildHTML---");
-    // console.log(message.image);
-    // console.log(message.image.url);
-    
-    if (message.image.url) {  
-      // console.log("---this comment has image----");
-      //メッセージに画像が含まれる場合のHTMLを作る
+    if (message.image) {  
       var html = `
       <div class="message">
         <div class="message__info">
@@ -34,17 +27,15 @@ $(function(){
           <div class="message__info__date">
             ${getCreatedAtFixed(message.created_at)}
           </div>
+        </div>
         <div class="lower-message">
           <p class="message__main">
-            い${message.content}
+            ${message.content}
           </p>
+          <img src=${message.image}>
         </div>
-        <img src=${message.image}>
       </div>`
-
     } else {
-      // console.log("---no image----");
-      //メッセージに画像が含まれない場合のHTMLを作る
       var html =
           `<div class="message" data-message-id=${message.id}>
             <div class="message__info">
@@ -68,36 +59,23 @@ $(function(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
-    // console.log(this);
-    // console.log(formData);
-    // console.log(url);
     $.ajax({
-      url: url,  //同期通信でいう『パス』
-      type: 'POST',  //同期通信でいう『HTTPメソッド』
+      url: url,
+      type: 'POST',
       data: formData,  
       dataType: 'json',
       processData: false,
       contentType: false
     })
     .done(function(data){
-      /*
-      // console.log('--done--');
-      // console.log(data);
-      // console.log(data.content);
-      // console.log(data.user_name);
-      // console.log("--------");
-      */
       var html = buildHTML(data);
       $('.message-list').append(html);
-      // $('.input-box__text').prop('value').reset();
       $('.input-box__text').val("");
-      //console.log($('.messages-list')[0].scrollHeight);
-      
       var list=$('.message-list').children();
       $('.message-list').animate({ scrollTop: $('.message-list')[0].scrollHeight});
       $('[type="submit"]').attr('disabled', false);
     }).fail(function(){
-      alert("メッセージ送信に失敗しました");
+      alert('error');
     });
   });
 }); 
