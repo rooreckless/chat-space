@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
   def index
     # params[:keyword]はユーザ入力です。
-    # これをusersテーブルのnameカラムに含むレコードを返します。
-    # 正確には,その検索結果から自分を除き、10件まで、としています。
-    @users = User.where(["name LIKE ?","%#{params[:keyword]}%"]).where.not(id: current_user.id).limit(10)
-    
+    # これをusersテーブルのnameカラムに含むレコードを返してもらうようモデルのクラスメソッドで依頼します。
+    @users = User.search(params[:keyword], current_user.id)
     respond_to do |format|
       format.html
       format.json
