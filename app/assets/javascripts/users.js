@@ -19,6 +19,21 @@ $(function(){
             `;
     $("#user-search-result").append(html);
   }
+  
+  function appendHTMLUserToGroup(name,id){
+    //この関数は追加ボタンを押されたユーザをチャットメンバー欄に表示します。
+    //が
+    //※上記のままだと、再度検索を行うと追加済みユーザーが検索されてしまいます。これを避けるようにする実装は、ChatSpaceの全ての実装が終わった後、余裕があれば行ってください。
+    //だそうです。
+    var html = `
+            <div class='chat-group-user'>
+              <input name='group[user_ids][]' type='hidden' value='${id}'>
+              <p class='chat-group-user__name'>${name}</p>
+              <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+            </div>
+            `;
+    $('.js-add-user').append(html);
+  }
   $('#user-search-field').on('keyup',function(){
     //「チャットメンバーを追加」の欄を入力した際イベントが発火し以下のコードが実行されます。
     let input = $('#user-search-field').val();
@@ -54,8 +69,12 @@ $(function(){
   //インクリメンタルサーチ結果から、「追加ボタン」をおされたメンバーをグループに追加するイベント
   $('.chat-group-form__field--right').on("click", ".chat-group-user__btn--add", function () {
     //('.chat-group-form__field--right')要素は、「追加するボタン(.chat-group-user__btn--add")」が動的に追加されるときには静的にある親要素です。これを調査範囲とし、この中にある要素をclickした時のイベントとしています。
-    console.log($(this).attr('data-user-name'));
-    console.log($(this).attr('data-user-id'));
-    //上の2つのコンソール出力は、「追加するボタン(.chat-group-user__btn--add")」が持っている属性data-user-nameとdata-user-idの属性値を出力します。
+    var group_add_user_name=$(this).attr('data-user-name');
+    var group_add_user_id=$(this).attr('data-user-id');
+    //上の2つの変数は、「追加するボタン(.chat-group-user__btn--add")」が持っている属性data-user-nameとdata-user-idの属性値を出力します。
+    $(this).parent().remove();
+    //「追加するボタン」がおされた時、その親要素を子要素も含めて消します。
+    appendHTMLUserToGroup(group_add_user_name,group_add_user_id);
+    //追加するボタンが押されたユーザをチャットメンバー欄でHTMLを表示する。
   });
 });
