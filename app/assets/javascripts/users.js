@@ -51,4 +51,11 @@ $(function(){
       alert("ユーザー検索に失敗しました");
     });
   });
+  //インクリメンタルサーチ結果から、「追加ボタン」をおされたメンバーをグループに追加するイベント
+  $('.chat-group-form__field--right').on("click", ".chat-group-user__btn--add", function () {
+    //('.chat-group-form__field--right')要素は、「追加するボタン(.chat-group-user__btn--add")」が動的に追加されるときには静的にある親要素です。これを調査範囲とし、この中にある要素をclickした時のイベントとしています。
+    console.log($(this).attr('data-user-name'));
+    console.log($(this).attr('data-user-id'));
+    //上の2つのコンソール出力は、「追加するボタン(.chat-group-user__btn--add")」が持っている属性data-user-nameとdata-user-idの属性値を出力します。
+  });
 });
