@@ -1,15 +1,10 @@
 class UsersController < ApplicationController
   def index
-    #binding.pry
-    #上はテスト用のbinding.pryです。
-    #users.jsからのajax通信($ajax)のdataを、
-    #このアクションのparamsで受け取ってるか確認します。
-    puts "ここはusers#indexです。users.jsより$.ajaxで呼び出されました。"
-    puts "ajaxで送信されたdataをparmsでうけています。"
-    puts "params = "
-    puts params
-    puts params[:keyword]
-    #くどいけどさらにテスト rubyのコンソール上でも表示できるか確かめます
+    # params[:keyword]はユーザ入力です。
+    # これをusersテーブルのnameカラムに含むレコードを返します。
+    # 正確には,その検索結果から自分を除き、10件まで、としています。
+    @users = User.where(["name LIKE ?","%#{params[:keyword]}%"]).where.not(id: current_user.id).limit(10)
+    
     respond_to do |format|
       format.html
       format.json
