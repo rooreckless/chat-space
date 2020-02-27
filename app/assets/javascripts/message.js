@@ -8,7 +8,7 @@ $(function(){
   function getCreatedAtFixed(str){
     var fulldate=new Date(str);
     var year=(fulldate.getFullYear().toString()+'年');
-    var month=forceDoubleNumber(fulldate.getMonth().toString())+'月';
+    var month=forceDoubleNumber((fulldate.getMonth()+1).toString())+'月';
     var day=forceDoubleNumber(fulldate.getDate().toString()+'日');
     var hour=forceDoubleNumber(fulldate.getHours().toString()+'時');
     var minuite=forceDoubleNumber(fulldate.getMinutes().toString()+'分');
