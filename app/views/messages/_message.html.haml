@@ -1,4 +1,6 @@
-.message
+-# 下は<div class="message">タグにカスタムデータ属性を設定します。
+-# 出来上がるのは<div class="message" data-message-id="そのメッセージのmessagesテーブルのid値">
+.message{data: {message: {id: message.id}}}
   .message__info
     .message__info__sender
       = message.user.name
