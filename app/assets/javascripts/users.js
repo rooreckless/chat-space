@@ -50,8 +50,32 @@ $(function(){
       //まず検索結果が0件かどうかで分けます。
       if (users.length !== 0) {
         //検索結果がある場合、下のforEach文を使い、１件ずつ、appendUserに渡します。
+        //--追記、独自に変更しました。------------------
+        //検索結果1件につき、現在表示中のグループのメンバー分だけループします。
+        //もし、検索結果の1件に、現在表示中のグループのメンバーがいるなら、appendUserに渡しません。
         users.forEach(function(user) {
-          appendUser(user);
+          var appendUserflg=true;
+          //上はappendUserにuserを渡すかどうかのフラグ。
+
+          var group_now_members=$('.js-add-user').find('input');
+          //findメソッドを使用して、親要素.js-add-userの子要素中にinputタグを取得。
+          //console.log(group_now_members);
+          var group_now_membersAry = Array.prototype.slice.call(group_now_members);
+          //上の取得した内容を配列に変換しforEachループに突入
+          group_now_membersAry.forEach( function(element,index) {
+          //console.log(element); 
+          //console.log(element.value);
+          //element.valueは、すでにこのグループに設定されている、メンバーのuser_id
+          if (element.value==user.id){
+            console.log("if文");
+            console.log(element.value);
+            appendUserflg=false;
+          }
+          });
+          if(appendUserflg){
+            appendUser(user);
+          }
+          appendUserflg=true;
           //appendUserは最後に作成した要素を「("#user-search-result").append(作成した要素)」します。
           //forEachループで呼んだとしても("#user-search-result")の子要素として追加appendするのであり、子要素を上書きするわけではないので、繰り返し呼び出していいです。
         });
@@ -72,8 +96,15 @@ $(function(){
     var group_add_user_name=$(this).attr('data-user-name');
     var group_add_user_id=$(this).attr('data-user-id');
     //上の2つの変数は、「追加するボタン(.chat-group-user__btn--add")」が持っている属性data-user-nameとdata-user-idの属性値を出力します。
+    
     $(this).parent().remove();
     //「追加するボタン」がおされた時、その親要素を子要素も含めて消します。
+
+    
+    
+
+
+    
     appendHTMLUserToGroup(group_add_user_name,group_add_user_id);
     //追加するボタンが押されたユーザをチャットメンバー欄でHTMLを表示する。
   });
