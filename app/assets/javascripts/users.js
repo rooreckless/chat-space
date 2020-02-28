@@ -77,4 +77,22 @@ $(function(){
     appendHTMLUserToGroup(group_add_user_name,group_add_user_id);
     //追加するボタンが押されたユーザをチャットメンバー欄でHTMLを表示する。
   });
+  //チャットグループに追加ボタン押下後、削除を押して追加する一覧から除去するイベント
+  $('.js-add-user').on("click", ".chat-group-user__btn--remove", function () {
+    //('.js-add-user')要素内にある、「削除ボタン(.chat-group-user__btn--")」が動的に追加されるときには静的にある親要素です。これを調査範囲とし、この中にある要素をclickした時のイベントとしています。
+    
+    //以下のコメントアウトは削除する領域を取得できている確認するテスト用部分です。不要なので、後に削除します。
+    /*
+    console.log("--remove--");
+    var group_remove_user_name=$(this).parent().children('p').text();
+    //この変数は、「削除するボタン(.chat-group-user__btn--remove")」の親要素の中のpタグにはさまれた文章を取得します。その後コンソール出力します。
+    console.log(group_remove_user_name);
+
+    var group_remove_user_id=$(this).parent().children('input').attr('value');
+    //この変数は、「削除するボタン(.chat-group-user__btn--remove")」の親要素の中のinputタグのvalue値を取得します。その後コンソール出力します。
+    console.log(group_remove_user_id);
+    */
+    $(this).parent().remove();
+    //「削除するボタン」がおされた時、その親要素を子要素も含めて消します。
+  });
 });
