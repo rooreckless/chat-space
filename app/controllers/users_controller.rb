@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   def index
-    # params[:keyword]はユーザ入力です。
-    # これをusersテーブルのnameカラムに含むレコードを返してもらうようモデルのクラスメソッドで依頼します。
     @users = User.search(params[:keyword], current_user.id)
     respond_to do |format|
       format.html
