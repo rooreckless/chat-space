@@ -18,11 +18,13 @@ class GroupsController < ApplicationController
   end
   def new
     @group = Group.new
-    @group.users << current_user
+    #@group.users << current_user
+    #@group.usersへのcurrent_userへのプッシュはいらなくなりました
   end
   def edit
     @group = Group.find(params[:id])
-    @group.users << current_user
+    #@group.users << current_user
+    #@group.usersへのcurrent_userへのプッシュはいらなくなりました
   end
   def update
     @group = Group.find(params[:id])
