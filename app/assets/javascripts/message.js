@@ -128,5 +128,10 @@ $(function(){
     //参考ページは https://rcmdnk.com/blog/2015/07/11/computer-javascript-jquery/
     //でもなんの意味もなかった...。結局自力でリロードしないといけなくなり、リロードしたらDBから最新の状況を下ろすからいみがなかった...。
     //window.onload=reloadMessages;
-  setInterval(reloadMessages, 7000);
+    if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+      setInterval(reloadMessages, 7000);
+      //自動更新メソッドの起動用のsetIntervalに条件をつける。
+      //document.location.href=現在アクセスしているURL が正規表現とマッチするなら、setIntervalで待ち受ける
+      //参考 https://www.sejuku.net/blog/26999
+    }
 }); 
