@@ -1,3 +1,15 @@
+#このファイルもbundle exec cap installでできたものです。
+#本番環境への設定を記述します。
+#サーバーホスト名
+#AWSサーバーへのログインユーザー名
+#サーバーロール
+#SSHの設定
+#その他サーバーに紐づく任意の設定
+#などを書いていくことになります。
+
+#下のipアドレスは このchatspaceアプリの本番環境があるEC2のElasticIPです。
+server '18.180.66.251', user: 'ec2-user', roles: %w{app db web}
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
