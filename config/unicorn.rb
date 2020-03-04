@@ -11,7 +11,7 @@ worker_processes 1
 #アプリケーションの設置されているディレクトリを指定
 #working_directory app_path
 #capistrano導入に伴いworking_directoryを変更します。
-working_directory '#{working_directory}/current'
+working_directory '#{app_path}/current'
 
 #Unicornの起動に必要なファイルの設置場所を指定
 #pid "#{app_path}/tmp/pids/unicorn.pid"
