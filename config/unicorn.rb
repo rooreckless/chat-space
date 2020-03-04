@@ -13,7 +13,9 @@ working_directory app_path
 pid "#{app_path}/tmp/pids/unicorn.pid"
 
 #ポート番号を指定
-listen 3000
+#listen 3000
+#下はnginxを介した処理になるよう設定している部分です。
+listen "#{app_path}/tmp/sockets/unicorn.sock"
 #サーバーはこのポート番号を開放する必要があります。
 
 #エラーのログを記録するファイルを指定
