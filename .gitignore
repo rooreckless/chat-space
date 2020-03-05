@@ -17,3 +17,5 @@
 .byebug_history
 # Ignore imagefile
 public/uploads/*
+# Ignore secrets.yml
+config/secrets.yml
