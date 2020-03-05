@@ -74,6 +74,9 @@ $(function(){
       var html = buildHTML(data);
       $('.message-list').append(html);
       $('.input-box__text').val("");
+      // 上はテキスト入力部分を入力後に値を消す方法
+      $('input[type=file]').val('');
+      // 上は画像ファイル選択部分をアップロード後に値を消す方法
       $('.message-list').animate({ scrollTop: $('.message-list')[0].scrollHeight});
       $('[type="submit"]').attr('disabled', false);
     }).fail(function(){
