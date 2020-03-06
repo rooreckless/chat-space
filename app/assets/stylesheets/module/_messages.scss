@@ -50,16 +50,17 @@ height:100vh;
       color:$BackGroundWhiteColor;
       .group{
         height:65px;
+        a{
+          text-decoration: none;
+        }
         &__name{
           font-size: 15px;
           color:$BackGroundWhiteColor;
-          text-decoration: none;
         }
         &__message{
           margin-top: 5px;
           font-size: 11px;
           color:$BackGroundWhiteColor;
-          text-decoration: none;
         }
       }
     }
